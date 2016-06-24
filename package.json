@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/dusanmilosavljevic1624/myAngular#readme",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "jshint": "^2.9.2"
   }
 }
