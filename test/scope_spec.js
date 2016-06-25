@@ -63,7 +63,7 @@ describe('digest', function () {
     expect(scope.counter).toBe(2);
   });
 
-  it('calls listener when initial watch value is underfined', function () {
+  it('calls listener when initial watch value is undefined', function () {
     scope.counter = 0;
 
     scope.$watch(
@@ -87,6 +87,45 @@ describe('digest', function () {
     scope.$digest();
 
     expect(oldValueGiven).toBe(123);
+  });
+
+  it('may have watchers that omit the listener function', function () {
+    var watchFn = jasmine.createSpy().and.returnValue('something');
+    scope.$watch(watchFn);
+
+    scope.$digest();
+
+    expect(watchFn).toHaveBeenCalled();
+  });
+
+  it('triggers chained watchers in the same digest', function () {
+    scope.name = 'Dusan';
+
+    scope.$watch(
+      function(scope){ return scope.nameUpper; },
+      function(newValue, oldValue, scope){
+        if (newValue) {
+          scope.initial = newValue.substring(0, 1) + '.';
+        }
+      }
+    );
+
+    scope.$watch(
+      function(scope){ return scope.name; },
+      function(newValue, oldValue, scope){
+        if (newValue) {
+          scope.nameUpper = newValue.toUpperCase();
+        }
+      }
+    );
+
+    scope.$digest();
+    expect(scope.initial).toBe('D.');
+
+    scope.name = 'Andrej';
+    scope.$digest();
+    expect(scope.initial).toBe('A.');
+
   });
 
 });
