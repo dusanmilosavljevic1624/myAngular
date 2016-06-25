@@ -23,5 +23,9 @@
     "gulp-util": "^3.0.7",
     "jshint": "^2.9.2",
     "sinon": "^1.17.4"
+  },
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "lodash": "^4.13.1"
   }
 }

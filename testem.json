@@ -1,13 +1,16 @@
 {
     "framework": "jasmine2",
     "launch_in_dev": ["PhantomJS"],
+    "serve_files": [
+    "node_modules/lodash/lodash.min.js",
+    "node_modules/jquery/dist/jquery.min.js",
+    "node_modules/sinon/pkg/sinon.js",
+    "src/**/*.js",
+    "test/**/*.js"
+
+],
     "src_files": [
         "src/**/*.js",
         "test/**/*.js"
-    ],
-    "serve_files": [
-      "node_modules/sinon/pkg/sinon.js",
-      "src/**/*.js",
-      "test/**/*.js"
     ]
 }

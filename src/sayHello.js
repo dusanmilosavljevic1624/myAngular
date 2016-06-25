@@ -1,3 +1,3 @@
-function sayHello() {
-  return 'Hello!';
+function sayHello(to) {
+return _.template("Hello, <%= name %>!")({name: to});
 }
