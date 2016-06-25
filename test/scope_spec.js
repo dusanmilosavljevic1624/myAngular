@@ -63,4 +63,30 @@ describe('digest', function () {
     expect(scope.counter).toBe(2);
   });
 
+  it('calls listener when initial watch value is underfined', function () {
+    scope.counter = 0;
+
+    scope.$watch(
+      function(scope){ return scope.someValue },
+      function(newValue, oldValue, scope){ scope.counter++ }
+    );
+
+    scope.$digest();
+    expect(scope.counter).toBe(1);
+  });
+
+  it('calls listener with new value as old value for the first time', function () {
+    scope.someValue = 123;
+    var oldValueGiven;
+
+    scope.$watch(
+      function(scope){ return scope.someValue; },
+      function(newValue, oldValue, scope){ oldValueGiven = oldValue; }
+    );
+
+    scope.$digest();
+
+    expect(oldValueGiven).toBe(123);
+  });
+
 });
