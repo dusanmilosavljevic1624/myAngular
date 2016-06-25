@@ -1,0 +1,13 @@
+{
+    "framework": "jasmine2",
+    "launch_in_dev": ["PhantomJS"],
+    "src_files": [
+        "src/**/*.js",
+        "test/**/*.js"
+    ],
+    "serve_files": [
+      "node_modules/sinon/pkg/sinon.js",
+      "src/**/*.js",
+      "test/**/*.js"
+    ]
+}
