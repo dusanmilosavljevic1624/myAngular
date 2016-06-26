@@ -229,4 +229,24 @@ describe('digest', function () {
     expect(scope.counter).toBe(1);
   });
 
+  it('executes $eval on a function and returns result', function () {
+    scope.aProperty = 42;
+
+    var result = scope.$eval(function(scope){
+      return scope.aProperty;
+    });
+
+    expect(result).toBe(42);
+  });
+
+  it('passes the $eval second argument straight through', function () {
+    scope.aProperty = 42;
+
+    var result = scope.$eval(function(scope, args) {
+      return scope.aProperty + args;
+    }, 2);
+
+    expect(result).toBe(44);
+  });
+
 });
